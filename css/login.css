@@ -1,6 +1,6 @@
 :root {
     --primary-color: #10578E;
-    --primary-color-hover: #0f4d7c;
+    --primary-color-hover: #2973ac;
     --primary-color-disabled: rgb(113, 145, 177);
     --secondary-color: #FFD900;
     --secondary-color-hover: #bea305;
@@ -71,11 +71,17 @@ input, button {
     width: 50%;
     background-color: #10578E;
     color: var(--tertiary-color);
+    font-weight: 600;
     cursor: pointer;
+    transition: 0.4s ease;
 }
 
 #play:disabled {
     background-color: var(--primary-color-disabled);
     color: var(--tertiary-color-disabled);
     cursor: auto;
+}
+
+#play:hover {
+    background-color: var(--primary-color-hover);
 }
