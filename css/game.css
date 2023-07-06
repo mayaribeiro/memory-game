@@ -1,0 +1,56 @@
+:root {
+    --primary-color: #10578E;
+    --primary-color-hover: #0f4d7c;
+    --primary-color-disabled: rgb(113, 145, 177);
+    --secondary-color: #FFD900;
+    --secondary-color-hover: #bea305;
+    --tertiary-color: #ffffff;
+    --tertiary-color-disabled: #d4d2d2;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 15px;
+    width: 90%;
+    margin: 100px auto;
+}
+
+.card {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 0.5rem;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    transition: all 400ms ease;
+    transform-style: preserve-3d;
+}
+
+.face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 0.5rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid var(--secondary-color);
+}
+
+.front {
+    background-image: url(../images/woody.webp);
+    background-size: contain;
+    transform: rotateY(180deg);
+}
+
+.back {
+    background-image: url(../images/face-card-back.png);
+    background-size: cover;
+    backface-visibility: hidden;
+}
+
+.card:hover {
+    transform: rotateY(180deg);
+}
+
+
+
