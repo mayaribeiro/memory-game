@@ -3,26 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Memória</title>
 
     <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- CSS -->
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/login.css">
 
-    <title>Jogo da Memória</title>
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="./images/icon-pixar-ball.webp" type="image/x-icon">
+
+    <!-- JS -->
+    <script defer src="./js/login.js"></script>
+
 </head>
 <body>
     <div class="login">
-        <img src="./images/jogo-da-memoria.png" alt="Jogo da Memória" width="310" id="game-name">
         <img src="./images/logo.png" alt="Logo Toy Story" width="133">
         <img src="./images/toy-story.png" alt="Brinquedos do filme Toy Story" width="255">
-    <form class="login-form">
+        <img src="./images/jogo-da-memoria.png" alt="Jogo da Memória" width="310" id="game-name">
+        <form class="login-form">
         <input type="text" placeholder="Digite seu nome" id="player-name" autocomplete="off">
-        <button type="submit" id="play">Jogar</button>
+        <button type="submit" id="play" disabled>Jogar</button>
     </form>
     </div>
     
