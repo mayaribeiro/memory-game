@@ -1,3 +1,13 @@
+:root {
+    --primary-color: #10578E;
+    --primary-color-hover: #0f4d7c;
+    --primary-color-disabled: rgb(113, 145, 177);
+    --secondary-color: #FFD900;
+    --secondary-color-hover: #bea305;
+    --tertiary-color: #ffffff;
+    --tertiary-color-disabled: #d4d2d2;
+}
+
 body {
     background-image: url(../images/andys-room.jpeg);
     background-repeat: no-repeat;
@@ -10,6 +20,7 @@ body {
     justify-content: center;
     height: 100vh;
 }
+
 
 .login {
     display: flex;
@@ -26,10 +37,6 @@ body {
     backdrop-filter: blur(2.8px);
     -webkit-backdrop-filter: blur(2.8px);
     border: 1px solid rgba(255, 255, 255, 0.16);
-}
-
-#game-name {
-    margin-bottom: 0.5rem;
 }
 
 .login-form {
@@ -49,11 +56,26 @@ input, button {
 #player-name {
     width: 200px;
     text-align: center;
+    border: 1px solid var(--primary-color);
+}
+
+::placeholder {
+    font-weight: bold;
+}
+
+#player-name:focus {
+    outline: none;
 }
 
 #play {
     width: 50%;
     background-color: #10578E;
-    color: white;
+    color: var(--tertiary-color);
+    cursor: pointer;
 }
 
+#play:disabled {
+    background-color: var(--primary-color-disabled);
+    color: var(--tertiary-color-disabled);
+    cursor: auto;
+}
