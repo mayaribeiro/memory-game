@@ -1,5 +1,10 @@
 const grid = document.querySelector('.grid');
 
+// VARIÁVEIS
+let firstCard = '';
+let secondCard = '';
+let shuffledArray = [];
+
 const characters = [
     'aliens.webp',
     'bala.webp',
@@ -18,14 +23,21 @@ const createElement = (tag, className) => {
     return element;
 }
 
-let firstCard = '';
-let secondCard = '';
-
 const checkEndGame = () => {
     const disabledCards = document.querySelectorAll('.disabled-card')
 
     if(disabledCards.length == shuffledArray.length) {
-        alert('GANHOU');
+        setTimeout(() => {
+            Swal.fire({
+                title: 'Você ganhou!',
+                text: 'Vá verificar sua posição no ranking.',
+                imageUrl: '../images/woody-endgame.png',
+                imageWidth: 122,
+                imageHeight: 214,
+                imageAlt: 'Woody',
+            })
+        }, 500);
+        
     }
 }
 
@@ -88,7 +100,7 @@ const createCard = (character) => {
 const loadGame = () => {
     const duplicateCharacters = [ ... characters, ... characters];
 
-    const shuffledArray = duplicateCharacters.sort(() => Math.random() - 0.5);
+    shuffledArray = duplicateCharacters.sort(() => Math.random() - 0.5);
 
     shuffledArray.forEach((character) => {
         const card = createCard(character);
