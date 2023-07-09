@@ -9,15 +9,33 @@
 }
 
 body {
-    background-color: var(--tertiary-color);
+    background-color: rgb(7, 11, 54);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
 }
 
 .grid {
+    padding-top: 1rem;
+    margin-inline: auto;
+    width: 90%;
+
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 15px;
-    width: 90%;
-    margin: 100px auto;
 }
 
 .card {
