@@ -6,15 +6,15 @@ let secondCard = '';
 let shuffledArray = [];
 
 const characters = [
-    'aliens.webp',
+    'aliens.png',
     'bala.webp',
     'buzz.webp',
     'hamm.webp',
     'jessie.png',
-    'rex.webp',
+    'rex.png',
     'slinky.png',
     'sr-e-sra-cabeca-de-batata.webp',
-    'woody.webp',
+    'woody.png',
 ];
 
 const createElement = (tag, className) => {
@@ -37,14 +37,13 @@ const checkEndGame = () => {
                 imageAlt: 'Woody',
             })
         }, 500);
-        
     }
 }
 
 const checkCards = () => {
     const firstCharacter = firstCard.getAttribute('data-character');
     const secondCharacter = secondCard.getAttribute('data-character');
-
+    
     if(firstCharacter == secondCharacter) {
         firstCard.firstChild.classList.add('disabled-card');
         secondCard.firstChild.classList.add('disabled-card');
@@ -69,16 +68,14 @@ const revealCard = ({target}) => {
     if(target.parentNode.className.includes('reveal-card')) {
         return;
     }
-    if(firstCard == '') {
+    if(firstCard == '' && !target.parentNode.classList.contains("grid")) {
         target.parentNode.classList.add('reveal-card');
         firstCard = target.parentNode;
-    } else if(secondCard == '') {
+    } else if(secondCard == '' && !target.parentNode.classList.contains("grid")) {
         target.parentNode.classList.add('reveal-card');
         secondCard = target.parentNode;
+        checkCards();
     }
-
-    checkCards();
-    
 }
 
 const createCard = (character) => {
