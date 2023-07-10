@@ -1,4 +1,6 @@
 const grid = document.querySelector('.grid');
+const spanPlayer = document.querySelector('.player');
+const timer = document.querySelector('.timer');
 
 // VARIÁVEIS
 let firstCard = '';
@@ -27,10 +29,12 @@ const checkEndGame = () => {
     const disabledCards = document.querySelectorAll('.disabled-card')
 
     if(disabledCards.length == shuffledArray.length) {
+        clearInterval(this.loop);
         setTimeout(() => {
             Swal.fire({
-                title: 'Você ganhou!',
-                text: 'Vá verificar sua posição no ranking.',
+                title: `${spanPlayer.innerHTML}, você ganhou!`,
+                html: `Seu tempo: ${timer.innerHTML}
+                <br>Vá verificar sua posição no ranking.`,
                 imageUrl: '../images/woody-endgame.png',
                 imageWidth: 122,
                 imageHeight: 214,
@@ -105,4 +109,15 @@ const loadGame = () => {
     });
 }
 
-loadGame();
+const startTimer = () => {
+    this.loop = setInterval(() => {
+        const currentTime = +timer.innerHTML;
+        timer.innerHTML = currentTime + 1;
+    }, 1000)
+}
+
+window.onload = () => {
+    spanPlayer.innerHTML = localStorage.getItem('player');
+    startTimer();
+    loadGame();
+}
