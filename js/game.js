@@ -81,6 +81,14 @@ const revealCard = ({target}) => {
         if(!isTimeStarted) {
             isTimeStarted = true;
             startTimer();
+            setTimeout(() => {
+                grid.classList.add('reveal-card');
+                shuffledArray.forEach((card) => card.classList.add('reveal-card'));
+                setTimeout(() => {
+                    grid.classList.remove('reveal-card');
+                    shuffledArray.forEach((card) => card.classList.remove('reveal-card'));
+                }, CARD_REVEAL_TIME);
+            }, CARD_HIDE_DELAY);
         }
     } else if(secondCard == '' && !target.parentNode.classList.contains("grid")) {
         target.parentNode.classList.add('reveal-card');
@@ -96,6 +104,7 @@ const createCard = (character) => {
     const card = createElement('div', 'card');
     const front = createElement('div', 'face front');
     const back = createElement('div', 'face back');
+    
 
     front.style.backgroundImage = `url(../images/${character})`;
 
@@ -126,7 +135,28 @@ const startTimer = () => {
     }, 1000)
 }
 
+const revealAllCards = () => {
+    const cards = document.querySelectorAll('.card');
+    cards.forEach((card) => {
+      card.classList.add('reveal-card');
+    });
+  }
+  
+  const hideAllCards = () => {
+    const cards = document.querySelectorAll('.card');
+    cards.forEach((card) => {
+      card.classList.remove('reveal-card');
+    });
+  }
+
 window.onload = () => {
     spanPlayer.innerHTML = localStorage.getItem('player');
     loadGame();
+    hideAllCards();
+    setTimeout(() => {
+    revealAllCards();
+    setTimeout(() => {
+      hideAllCards(); 
+    }, 3000);
+  }, 1000);
 }
