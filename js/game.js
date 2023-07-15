@@ -1,11 +1,14 @@
 const grid = document.querySelector('.grid');
 const spanPlayer = document.querySelector('.player');
 const timer = document.querySelector('.timer');
+const counter = document.querySelector('.counter');
 
 // VARIÁVEIS
 let firstCard = '';
 let secondCard = '';
 let shuffledArray = [];
+let count = 0;
+let isTimeStarted = false;
 
 const characters = [
     'aliens.png',
@@ -75,10 +78,17 @@ const revealCard = ({target}) => {
     if(firstCard == '' && !target.parentNode.classList.contains("grid")) {
         target.parentNode.classList.add('reveal-card');
         firstCard = target.parentNode;
+        if(!isTimeStarted) {
+            isTimeStarted = true;
+            startTimer();
+        }
     } else if(secondCard == '' && !target.parentNode.classList.contains("grid")) {
         target.parentNode.classList.add('reveal-card');
         secondCard = target.parentNode;
         checkCards();
+        
+        count++;
+        counter.innerHTML = count;
     }
 }
 
@@ -118,6 +128,5 @@ const startTimer = () => {
 
 window.onload = () => {
     spanPlayer.innerHTML = localStorage.getItem('player');
-    startTimer();
     loadGame();
 }
