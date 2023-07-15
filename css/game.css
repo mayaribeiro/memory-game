@@ -2,6 +2,7 @@
     --primary-color: #10578E;
     --primary-color-hover: #0f4d7c;
     --primary-color-disabled: rgb(113, 145, 177);
+    --background-header-footer: #6A92A4;
     --secondary-color: #FFD900;
     --secondary-color-hover: #bea305;
     --tertiary-color: #ffffff;
@@ -23,17 +24,20 @@ header, footer {
     align-items: center;
     width: 90%;
     padding: 2rem;
-    background-color: var(--tertiary-color);
     margin: 1rem auto;
     font-weight: 600;
     font-size: 2rem;
-    border-radius: 0.5rem
+    border-radius: 0.5rem;
+    color: var(--secondary-color);
+    text-shadow: -1.2px -1.2px 0 var(--primary-color), 1.2px -1.2px 0 var(--primary-color), -1.2px 1.2px 0 var(--primary-color), 1.2px 1.2px 0 var(--primary-color);
+    background-color: var(--background-header-footer);
+    border: 1px solid var(--secondary-color);
 }
 
 .grid {
     margin-inline: auto;
     width: 90%;
-
+    max-width: 1100px;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 15px;
@@ -77,8 +81,4 @@ header, footer {
 .disabled-card {
     filter: saturate(0.2);
     opacity: 0.7;
-}
-
-footer {
-    
 }
