@@ -52,6 +52,24 @@ const checkEndGame = () => {
     }
 }
 
+const ranking = () => {
+    let players = [];
+    if(localStorage.hasOwnProperty("players")){
+        players = JSON.parse(localStorage.getItem("players"));
+    }
+    const playerName = spanPlayer.innerHTML;
+    const playerTime = timer.innerHTML;
+    const playerCounter = counter.innerHTML;
+
+    const playerInfo = {
+        playerName: playerName,
+        timer: playerTime,
+        counter: playerCounter
+    };
+    players.push(playerInfo);
+    localStorage.setItem("players", JSON.stringify(players));
+}
+
 const checkCards = () => {
     const firstCharacter = firstCard.getAttribute('data-character');
     const secondCharacter = secondCard.getAttribute('data-character');
@@ -166,4 +184,5 @@ window.onload = () => {
       hideAllCards(); 
     }, 3000);
   }, 1000);
+  ranking();
 }
