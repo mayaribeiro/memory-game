@@ -37,6 +37,7 @@ const checkEndGame = () => {
             Swal.fire({
                 title: `${spanPlayer.innerHTML}, você ganhou!`,
                 html: `Seu tempo: ${timer.innerHTML}
+                <br>Suas jogadas: ${counter.innerHTML}
                 <br>Vá verificar sua posição no ranking.`,
                 imageUrl: '../images/woody-endgame.png',
                 imageWidth: 122,
@@ -44,6 +45,10 @@ const checkEndGame = () => {
                 imageAlt: 'Woody',
             })
         }, 500);
+        if(typeof(Storage)!="undefined") {
+            localStorage.setItem("timer", timer.innerHTML);
+            localStorage.setItem("counter", counter.innerHTML);
+        }
     }
 }
 
@@ -148,6 +153,8 @@ const revealAllCards = () => {
       card.classList.remove('reveal-card');
     });
   }
+
+
 
 window.onload = () => {
     spanPlayer.innerHTML = localStorage.getItem('player');
