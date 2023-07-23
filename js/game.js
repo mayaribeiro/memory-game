@@ -9,6 +9,10 @@ let secondCard = '';
 let shuffledArray = [];
 let count = 0;
 let isTimeStarted = false;
+let players = [];
+let playerName = '';
+let playerTime = '';
+let playerCounter = '';
 
 const characters = [
     'aliens.png',
@@ -45,29 +49,27 @@ const checkEndGame = () => {
                 imageAlt: 'Woody',
             })
         }, 500);
-        if(typeof(Storage)!="undefined") {
-            localStorage.setItem("timer", timer.innerHTML);
-            localStorage.setItem("counter", counter.innerHTML);
-        }
+        ranking();
     }
 }
 
 const ranking = () => {
-    let players = [];
-    if(localStorage.hasOwnProperty("players")){
-        players = JSON.parse(localStorage.getItem("players"));
+    if(localStorage.rankingPlayers){
+        players = JSON.parse(localStorage.getItem("rankingPlayers"));
     }
-    const playerName = spanPlayer.innerHTML;
-    const playerTime = timer.innerHTML;
-    const playerCounter = counter.innerHTML;
-
+    
     const playerInfo = {
-        playerName: playerName,
-        timer: playerTime,
-        counter: playerCounter
+        playerName: spanPlayer.innerHTML,
+        playerTime: timer.innerHTML,
+        playerCounter: counter.innerHTML
     };
+
     players.push(playerInfo);
-    localStorage.setItem("players", JSON.stringify(players));
+    localStorage.rankingPlayers = JSON.stringify(players);
+}
+
+const showRanking = () => {
+    const telaRanking = createElement("div","ranking");
 }
 
 const checkCards = () => {
@@ -163,7 +165,7 @@ const revealAllCards = () => {
     cards.forEach((card) => {
       card.classList.add('reveal-card');
     });
-  }
+}
   
   const hideAllCards = () => {
     const cards = document.querySelectorAll('.card');
@@ -171,8 +173,6 @@ const revealAllCards = () => {
       card.classList.remove('reveal-card');
     });
   }
-
-
 
 window.onload = () => {
     spanPlayer.innerHTML = localStorage.getItem('player');
@@ -184,5 +184,4 @@ window.onload = () => {
       hideAllCards(); 
     }, 3000);
   }, 1000);
-  ranking();
 }
