@@ -72,21 +72,22 @@ const ranking = () => {
     localStorage.rankingPlayers = JSON.stringify(players);
 }
 
-const showRanking = () => {
-    telaRanking.innerHTML = "";
+rankingButton.onclick = function() {
     if(localStorage.rankingPlayers) {
         players = JSON.parse(localStorage.getItem("rankingPlayers"));
     }
     for (let index = 0; index < players.length; index++) {
         const { playerName, playerTime, playerCounter } = players[index];
         let p = document.createElement("p");
-        p.innerHTML = `${playerName} - Tempo: ${playerTime}, Jogadas: ${playerCounter}`;
+        p.innerHTML = `${playerName} Tempo: ${playerTime} Jogadas: ${playerCounter}`;
         telaRanking.append(p);
-        
     }
     telaRanking.showModal();
 }
-rankingButton.addEventListener('click', showRanking);
+
+buttonClose.onclick = function() {
+    telaRanking.close();
+}
 
 const restart = () => {
     window.location.reload();
