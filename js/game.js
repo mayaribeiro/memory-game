@@ -53,7 +53,7 @@ const checkEndGame = () => {
                 imageAlt: 'Woody',
             })
         }, 500);
-        showRanking();
+        ranking();
     }
 }
 
@@ -72,21 +72,18 @@ const ranking = () => {
     localStorage.rankingPlayers = JSON.stringify(players);
 }
 
-// const showRanking = () => {
-//     ranking();
-//     telaRanking.innerHTML = "";
-//     if(localStorage.rankingPlayers) {
-//         players = JSON.parse(localStorage.getItem("rankingPlayers"));
-//     }
-//     for (let index = 0; index < players.length; index++) {
-//         let p = document.createElement("p");
-//         p.innerHTML = players[index];
-//         telaRanking.append(p);
-        
-//     }
-// }
-
 const showRanking = () => {
+    telaRanking.innerHTML = "";
+    if(localStorage.rankingPlayers) {
+        players = JSON.parse(localStorage.getItem("rankingPlayers"));
+    }
+    for (let index = 0; index < players.length; index++) {
+        const { playerName, playerTime, playerCounter } = players[index];
+        let p = document.createElement("p");
+        p.innerHTML = `${playerName} - Tempo: ${playerTime}, Jogadas: ${playerCounter}`;
+        telaRanking.append(p);
+        
+    }
     telaRanking.showModal();
 }
 rankingButton.addEventListener('click', showRanking);
