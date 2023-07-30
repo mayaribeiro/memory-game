@@ -1,7 +1,11 @@
 const grid = document.querySelector('.grid');
+const telaRanking = document.querySelector('.telaRanking');
 const spanPlayer = document.querySelector('.player');
 const timer = document.querySelector('.timer');
 const counter = document.querySelector('.counter');
+const restartGame = document.querySelector('.restart-game');
+const rankingButton = document.querySelector('.ranking');
+const buttonClose = document.querySelector('.buttonClose');
 
 // VARIÁVEIS
 let firstCard = '';
@@ -49,7 +53,7 @@ const checkEndGame = () => {
                 imageAlt: 'Woody',
             })
         }, 500);
-        ranking();
+        showRanking();
     }
 }
 
@@ -68,9 +72,29 @@ const ranking = () => {
     localStorage.rankingPlayers = JSON.stringify(players);
 }
 
+// const showRanking = () => {
+//     ranking();
+//     telaRanking.innerHTML = "";
+//     if(localStorage.rankingPlayers) {
+//         players = JSON.parse(localStorage.getItem("rankingPlayers"));
+//     }
+//     for (let index = 0; index < players.length; index++) {
+//         let p = document.createElement("p");
+//         p.innerHTML = players[index];
+//         telaRanking.append(p);
+        
+//     }
+// }
+
 const showRanking = () => {
-    const telaRanking = createElement("div","ranking");
+    telaRanking.showModal();
 }
+rankingButton.addEventListener('click', showRanking);
+
+const restart = () => {
+    window.location.reload();
+}
+restartGame.addEventListener('click', restart);
 
 const checkCards = () => {
     const firstCharacter = firstCard.getAttribute('data-character');
