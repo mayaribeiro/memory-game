@@ -5,13 +5,13 @@
     --background-header-footer: #6A92A4;
     --secondary-color: #FFD900;
     --secondary-color-hover: #bea305;
-    --tertiary-color: #ffffff;
-    --tertiary-color-disabled: #d4d2d2;
-    --terciary-color-red: #B80305;
+    --terciary-color: #B80305;
+    --light-color: #ffffff;
+    --light-color-disabled: #d4d2d2;
 }
 
 body {
-    background-color: var(--background-header-footer);
+    background-color: rgb(17, 17, 44);
     width: 100%;
     min-height: 100vh;
 }
@@ -38,11 +38,11 @@ header, footer {
 a {
     aspect-ratio: 1/1;
     background-color: var(--secondary-color);
-    border: 1px solid var(--primary-color);
+    border: none;
     border-radius: 50%;
     padding: 0.5rem 0.8rem 0.5rem 0.9rem;
     cursor: pointer;
-    box-shadow: 0px 0px 4px 4px rgba(22, 11, 73, 0.5);
+    box-shadow: 0px 0px 4px 4px rgba(228, 213, 11, 0.5);
     transition: 0.5s ease;
 }
 
@@ -52,7 +52,7 @@ a:hover {
 
 .ranking {
     aspect-ratio: 1/1;
-    background-color: var(--terciary-color-red);
+    background-color: var(--terciary-color);
     border: none;
     border-radius: 50%;
     padding: 0.5rem 0.7rem 0.5rem 0.8rem;
@@ -66,21 +66,21 @@ a:hover {
     transform: scale(1.1);
 }
 
-.dialog-content {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-}
-
 .telaRanking {
     padding: 1rem;
     gap: 1rem;
     border-radius: 0.5rem;
-    border: 1px solid var(--terciary-color-red);
+    border: 2px solid var(--terciary-color);
+    box-shadow: 0px 0px 4px 4px rgba(255, 0, 0, 0.5);
+    width: fit-content;
+    margin: auto;
+    font-size: 1.5rem;
+    background-color: var(--secondary-color);
 }
 
 .telaRanking::backdrop {
-    background-color: rgb(0, 0, 0 / 0.9);
+    /* background-color: rgb(0, 0, 0 / 0.9); */
+    opacity: 0.9;
 }
 
 .header-ranking {
@@ -94,6 +94,7 @@ a:hover {
 .buttonClose {
     background-color: transparent;
     margin-bottom: 1rem;
+    text-align: right;
 }
 
 .restart-game {
