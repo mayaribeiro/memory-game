@@ -1,5 +1,6 @@
 const grid = document.querySelector('.grid');
 const telaRanking = document.querySelector('.telaRanking');
+const playersRanking = document.querySelector('.players-ranking');
 const spanPlayer = document.querySelector('.player');
 const timer = document.querySelector('.timer');
 const counter = document.querySelector('.counter');
@@ -72,7 +73,8 @@ const ranking = () => {
     localStorage.rankingPlayers = JSON.stringify(players);
 }
 
-rankingButton.onclick = function() {
+const showRanking = () => {
+    playersRanking.innerHTML = '';
     if(localStorage.rankingPlayers) {
         players = JSON.parse(localStorage.getItem("rankingPlayers"));
     }
@@ -80,8 +82,12 @@ rankingButton.onclick = function() {
         const { playerName, playerTime, playerCounter } = players[index];
         let p = document.createElement("p");
         p.innerHTML = `${playerName} Tempo: ${playerTime} Jogadas: ${playerCounter}`;
-        telaRanking.append(p);
+        playersRanking.append(p);
     }
+}
+
+rankingButton.onclick = function() {
+    showRanking();
     telaRanking.showModal();
 }
 
@@ -140,10 +146,9 @@ const revealCard = ({target}) => {
     } else if(secondCard == '' && !target.parentNode.classList.contains("grid")) {
         target.parentNode.classList.add('reveal-card');
         secondCard = target.parentNode;
-        checkCards();
-        
         count++;
         counter.innerHTML = count;
+        checkCards();
     }
 }
 
