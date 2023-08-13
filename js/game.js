@@ -78,10 +78,18 @@ const showRanking = () => {
     if(localStorage.rankingPlayers) {
         players = JSON.parse(localStorage.getItem("rankingPlayers"));
     }
+
+    players.forEach(player => {
+        const average = (parseFloat(player.playerTime) + parseFloat(player.playerCounter)) / 2;
+        player.average = average;
+    });
+    
+    players.sort((a, b) => a.average - b.average);
+
     for (let index = 0; index < players.length; index++) {
         const { playerName, playerTime, playerCounter } = players[index];
         let p = document.createElement("p");
-        p.innerHTML = `${playerName} Tempo: ${playerTime} Jogadas: ${playerCounter}`;
+        p.innerHTML = `${playerName} <br> Tempo: ${playerTime} <br> Jogadas: ${playerCounter}`;
         playersRanking.append(p);
     }
 }
