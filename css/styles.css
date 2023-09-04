@@ -5,4 +5,25 @@
     list-style: none;
     border: none;
     font-family: 'Nunito', sans-serif;
+
+    /* Estilos para navegadores Webkit (Chrome, Safari) */
+    ::-webkit-scrollbar {
+    width: 20px; /* Largura da barra de rolagem */
+    }
+  
+    ::-webkit-scrollbar-track {
+        background-color: transparent; /* Cor de fundo da área da barra de rolagem */
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background-color: #33459e; /* Cor do botão da barra de rolagem */
+        border-radius: 1rem; /* Raio das bordas do botão da barra de rolagem */
+        border: 6px solid transparent;
+        background-clip: content-box;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: #11113d !important; /* Cor do botão da barra de rolagem ao passar o mouse */
+    }
+  
 }
