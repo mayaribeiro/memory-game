@@ -89,7 +89,7 @@ const showRanking = () => {
     for (let index = 0; index < players.length; index++) {
         const { playerName, playerTime, playerCounter } = players[index];
         let p = document.createElement("p");
-        p.innerHTML = `${playerName} <br> Tempo: ${playerTime} <br> Jogadas: ${playerCounter}`;
+        p.innerHTML = `<br>${playerName} <br> Tempo: ${playerTime} <br> Jogadas: ${playerCounter}`;
         playersRanking.append(p);
     }
 }
